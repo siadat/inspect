@@ -1,5 +1,15 @@
 # inspect
 
+Inspect a JSON, CSV or HTML file in a Ruby REPL. Try:
+
+	curl https://api.github.com/repos/siadat/inspect/commits | inspect
+
+And you will get:
+
+    [1] pry(main)> x.first['commit']['author']['name']
+    => "Sina Siadat"
+    [2] pry(main)>
+
 ## Install
 
     gem install inspect
