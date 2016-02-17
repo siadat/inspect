@@ -1,0 +1,19 @@
+# inspect
+
+## Install
+
+    gem install inspect
+
+## Usage
+
+    cat FILE | inspect [FORMAT]
+
+
+## Examples
+
+    cat file.json | inspect
+    cat file.csv  | inspect
+    cat file.html | inspect
+    cat file.html | inspect html
+    curl https://api.github.com/users/siadat/repos | inspect
+    curl https://github.com/siadat                 | inspect
