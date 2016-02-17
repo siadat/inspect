@@ -8,6 +8,7 @@
 
     cat FILE | inspect [FORMAT]
 
+`FORMAT` is optional and could be one of the following: `json`, `html`, `csv`
 
 ## Examples
 
