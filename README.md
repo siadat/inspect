@@ -10,7 +10,7 @@ And you will get:
 
     [1] pry(main)>
 
-Your data is stored as `x`:
+Data is parsed and stored as `x`:
 
     [1] pry(main)> x.first['hello']
     => "world"
