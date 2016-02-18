@@ -12,7 +12,7 @@ And you will get:
 
 Data is parsed and stored as `x`:
 
-    [1] pry(main)> x.first['hello']
+    [1] pry(main)> x['hello']
     => "world"
     [2] pry(main)>
 
