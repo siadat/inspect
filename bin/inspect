@@ -4,12 +4,11 @@ require 'inspect'
 data = read_data
 x = parse_data(ARGV.shift, data)
 if x.nil?
-  puts 'ERROR: Could not parse data.'
-  puts 'ERROR: Try explicit formating, e.g. cat file | inspect json'
-  puts "ERROR: Here is the first line: #{data.lines.first}"
+  STDERR.puts 'ERROR: Could not parse data.'
+  STDERR.puts 'ERROR: Try explicit formating, e.g. cat file | inspect json'
+  STDERR.puts "ERROR: Here is the first line: #{data.lines.first}"
   exit 1
 end
-puts 'x is ready.'
 
 require 'readline'
 require 'pry'

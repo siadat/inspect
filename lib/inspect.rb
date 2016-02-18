@@ -17,7 +17,7 @@ def parse_data(format, data)
 end
 
 def read_data
-  puts "Reading from STDIN..."
+  # puts "Reading from STDIN..."
   ARGF.read
 end
 
