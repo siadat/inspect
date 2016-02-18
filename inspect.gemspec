@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'inspect'
-  s.version     = '0.0.0'
+  s.version     = '0.0.1'
   s.executables << 'inspect'
   s.date        = '2016-01-17'
   s.summary     = 'REPL for Json, CSV, and HTML.'
