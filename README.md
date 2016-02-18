@@ -1,30 +1,42 @@
 # inspect
 
-Inspect a JSON, CSV or HTML file in a Ruby REPL. Try:
+Inspect a JSON, CSV or HTML file in a Ruby REPL.
 
-	curl https://api.github.com/repos/siadat/inspect/commits | inspect
+Try:
+
+	echo '{"hello": "world"}' | inspect
 
 And you will get:
 
-    [1] pry(main)> x.first['commit']['author']['name']
-    => "Sina Siadat"
+    [1] pry(main)>
+
+Your data is stored as `x`:
+
+    [1] pry(main)> x.first['hello']
+    => "world"
     [2] pry(main)>
 
-## Install
+### Install
 
     gem install inspect
 
-## Usage
+### Usage
 
     cat FILE | inspect [FORMAT]
 
 `FORMAT` is optional and could be one of the following: `json`, `html`, `csv`
 
-## Examples
+### Examples
 
+    cat file.csv | inspect
     cat file.json | inspect
-    cat file.csv  | inspect
     cat file.html | inspect
     cat file.html | inspect html
     curl https://api.github.com/users/siadat/repos | inspect
-    curl https://github.com/siadat                 | inspect
+	curl https://api.github.com/repos/siadat/inspect/commits | inspect
+
+### Contribute
+
+Create an issue or send a pull request. Use rake to run all tests:
+
+    rake test
