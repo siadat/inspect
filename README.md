@@ -34,6 +34,7 @@ Data is parsed and stored as `x`:
     cat file.html | inspect html
     curl https://api.github.com/users/siadat/repos | inspect
 	curl https://api.github.com/repos/siadat/inspect/commits | inspect
+    inspect file.xml
 
 ### Contribute
 
