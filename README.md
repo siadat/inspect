@@ -1,6 +1,6 @@
 # inspect
 
-Inspect a JSON, CSV or HTML file in a Ruby REPL.
+Inspect a JSON, CSV, HTML or XML file in a Ruby REPL.
 
 Try:
 
@@ -24,7 +24,7 @@ Data is parsed and stored as `x`:
 
     cat FILE | inspect [FORMAT]
 
-`FORMAT` is optional and could be one of the following: `json`, `html`, `csv`
+`FORMAT` is optional and could be one of the following: `json`, `html`, `csv`, `xml`
 
 ### Examples
 

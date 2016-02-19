@@ -29,6 +29,10 @@ def parse(format, data)
     CSV.parse(data)
   when 'html'
     Nokogiri::HTML(data)
+  when 'xml'
+    Nokogiri::XML(data)
   end
+
+
 rescue JSON::ParserError, CSV::MalformedCSVError
 end

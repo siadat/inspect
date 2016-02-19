@@ -18,4 +18,11 @@ class InspectTest < Minitest::Test
     x = parse_data(nil, File.read('./test/example.html'))
     assert_equal  'Pi is 3.14', x.children.last.text.strip
   end
+
+  def test_xml
+    x = parse_data(nil, File.read('./test/example.xml'))
+    assert_equal 'street', x.search('inventory')[1].search('tire').first.children.first.text
+    assert_equal 'all weather', x.xpath('//tire')[0].children.text
+  end
+
 end
