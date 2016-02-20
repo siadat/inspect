@@ -22,19 +22,22 @@ Data is parsed and stored as `x`:
 
 ### Usage
 
-    cat FILE | inspect [FORMAT]
-
-`FORMAT` is optional and could be one of the following: `json`, `html`, `csv`, `xml`
+    cat FILE | inspect
 
 ### Examples
 
     cat file.csv | inspect
     cat file.json | inspect
     cat file.html | inspect
-    cat file.html | inspect html
+    cat file.xml | inspect
+
     curl https://api.github.com/users/siadat/repos | inspect
 	curl https://api.github.com/repos/siadat/inspect/commits | inspect
+    
+    inspect file.html
     inspect file.xml
+    inspect file.json
+    inspect file.csv
 
 ### Contribute
 

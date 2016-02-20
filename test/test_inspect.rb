@@ -21,8 +21,9 @@ class InspectTest < Minitest::Test
 
   def test_xml
     x = parse_data(nil, File.read('./test/example.xml'))
-    assert_equal 'street', x.search('inventory')[1].search('tire').first.children.first.text
-    assert_equal 'all weather', x.xpath('//tire')[0].children.text
+    assert_equal 'Al Bundy', x.xpath("//character")[0].text
+    assert_equal 'The A-Team', x.css("dramas name").text
+    assert_equal 'Larry Appleton', x.search("character")[3].text
   end
 
 end

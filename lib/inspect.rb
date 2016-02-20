@@ -2,10 +2,12 @@
 require 'json'
 require 'csv'
 require 'nokogiri'
+
 def parse_data(format, data)
   if format.nil?
     if data.match /^\s*</
-      x = parse('html', data)
+      x = parse('xml', data)
+      x = parse('html', data) if x.children.first.name == 'html'
     else
       x = parse('json', data)
       x = parse('csv', data) if x.nil?
@@ -14,6 +16,14 @@ def parse_data(format, data)
     x = parse(format, data)
   end
   x
+end
+
+def infer_format
+  unless ARGV[0].nil?
+    input = ARGV[0].dup
+    format = input.split('.')[-1]  
+    format
+  end
 end
 
 def read_data
@@ -30,9 +40,8 @@ def parse(format, data)
   when 'html'
     Nokogiri::HTML(data)
   when 'xml'
-    Nokogiri::XML(data)
+    Nokogiri::XML(data) {|config| config.strict.noblanks}
   end
-
 
 rescue JSON::ParserError, CSV::MalformedCSVError
 end
