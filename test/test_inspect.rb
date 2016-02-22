@@ -26,4 +26,10 @@ class InspectTest < Minitest::Test
     assert_equal 'Larry Appleton', x.search("character")[3].text
   end
 
+  def test_yml
+    x = parse_data(nil, File.read('./test/example.yml'))
+    assert_equal 'Dorothy', x['customer']['first_name']
+    assert_equal 'High Heeled "Ruby" Slippers', x['items'][1]['descrip']
+  end
+  
 end
