@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 require 'inspect'
 
+format = infer_format
 data = read_data
-x = parse_data(ARGV.shift, data)
+x = parse_data(format, data)
 if x.nil?
   STDERR.puts 'ERROR: Could not parse data.'
   STDERR.puts 'ERROR: Try explicit formating, e.g. cat file | inspect json'
