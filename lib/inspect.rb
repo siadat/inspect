@@ -8,7 +8,7 @@ def parse_data(format, data)
   if format.nil?
     if data.match /^\s*</
       x = parse('xml', data)
-      x = parse('html', data) if x.children.first.name == 'html'
+      x = parse('html', data) if x.root.name == 'html'
     else
       x = parse('json', data)
       x = parse('csv', data) if x.nil?
@@ -20,17 +20,17 @@ def parse_data(format, data)
   x
 end
 
-def infer_format
-  unless ARGV[0].nil?
-    input = ARGV[0].dup
-    format = input.split('.')[-1]
-    format
-  end
+def read_data(filename)
+  File.read(filename)
 end
 
-def read_data
-  # puts "Reading from STDIN..."
-  ARGF.read
+def read_data_from_stdin
+  if ARGF.filename != "-" or (not STDIN.tty? and not STDIN.closed?)
+    ARGF.read
+  else
+    STDERR.puts 'ERROR: No datastream to inspect.'
+    exit 1
+  end
 end
 
 def parse(format, data)
@@ -47,5 +47,5 @@ def parse(format, data)
     Nokogiri::XML(data) {|config| config.strict.noblanks}
   end
 
-rescue JSON::ParserError, CSV::MalformedCSVError
+rescue JSON::ParserError, CSV::MalformedCSVError, Psych::SyntaxError
 end

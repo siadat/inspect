@@ -1,13 +1,51 @@
 #!/usr/bin/env ruby
+require 'docopt'
 require 'inspect'
 
-format = infer_format
-data = read_data
+
+doc = <<DOCOPT
+
+Usage:
+  inspect [--json|--csv|--html|--xml|--yml] [<filename>]
+  inspect [<filename>]
+
+Options:
+  -h --help     Show this screen.
+  --json        Parse as json.
+  --html        Parse as html.
+  --csv         Parse as csv.
+  --xml         Parse as xml.
+  --yml         Parse as yml.
+
+
+DOCOPT
+
+format = nil
+filename = nil
+
+# Assign filename and format if possible
+begin
+  options = Docopt::docopt(doc)
+  filename = options['<filename>']
+  options.each do |key, value|
+    if value == true
+      format = key.split('-')[-1]
+    end
+  end
+rescue Docopt::Exit => e
+  puts e.message
+end
+
+# Decide which style of data reading we do
+if filename != nil
+  data = read_data(filename)
+else
+  data = read_data_from_stdin
+end
+
 x = parse_data(format, data)
 if x.nil?
   STDERR.puts 'ERROR: Could not parse data.'
-  STDERR.puts 'ERROR: Try explicit formating, e.g. cat file | inspect json'
-  STDERR.puts "ERROR: Here is the first line: #{data.lines.first}"
   exit 1
 end
 

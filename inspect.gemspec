@@ -12,4 +12,5 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.add_dependency 'pry', '~> 0.10.1'
   s.add_dependency 'nokogiri', '~> 1.6'
+  s.add_dependency 'docopt', '~>0.5.0'
 end
